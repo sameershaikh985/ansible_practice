@@ -1,0 +1,13 @@
+---
+
+- hosts: all
+  tasks:
+  
+  - name: update cache
+    yum:
+      update_cache: yes
+
+  - name: install apache2 package
+    yum:
+      name: httpd
+      state: latest
