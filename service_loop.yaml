@@ -1,0 +1,19 @@
+
+---
+
+- hosts: all
+  become: true
+  become_user: root
+  become_method: sudo
+  vars:
+    my_service:
+      - crond
+      - sshd
+  tasks:
+  
+    - name: start some service using loop
+      service:
+        name: "{{ item }}"
+        state: started
+      loop: "{{ my_service }}"  
+
